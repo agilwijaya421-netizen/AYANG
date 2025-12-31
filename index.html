@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy New Year Sayang!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&family=Arial&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             padding: 0;
             background: linear-gradient(135deg, #1a0a2e 0%, #3d143d 100%);
-            color: #ffffff;
+            /* Warna teks utama menjadi pink cerah */
+            color: #ffb6c1; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
@@ -43,13 +44,16 @@
         h1 {
             font-size: 2.8rem;
             margin-bottom: 10px;
-            color: #ff69b4;
+            /* Pink Hot untuk Judul */
+            color: #ff69b4; 
             font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
         }
 
         .sub-text {
             font-size: 1.1rem;
-            opacity: 0.9;
+            /* Pink Muda untuk Sub-teks */
+            color: #ffc0cb; 
             margin-bottom: 25px;
         }
 
@@ -75,18 +79,19 @@
             display: none;
             margin-top: 25px;
             font-size: 1.2rem;
-            color: #ffd700;
+            /* Warna Pink Peach yang manis untuk Pesan Rahasia */
+            color: #ffdab9; 
             line-height: 1.6;
             font-weight: 600;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 105, 180, 0.1);
             padding: 15px;
             border-radius: 15px;
+            border: 1px solid rgba(255, 182, 193, 0.3);
         }
 
-        /* Emoji/Stiker Besar dan Lucu */
         .sticker {
             position: absolute;
-            font-size: 5rem; /* Emoji dibuat lebih besar */
+            font-size: 5rem;
             z-index: 50;
             pointer-events: none;
             filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
@@ -98,7 +103,6 @@
             50% { transform: translateY(-20px) rotate(5deg); }
         }
 
-        /* Animasi Hati Melayang */
         .heart-float {
             position: absolute;
             color: #ff69b4;
@@ -150,7 +154,6 @@
             btn.style.display = 'none';
         });
 
-        // --- Kembang Api Meriah ---
         class Particle {
             constructor(x, y, color, vel) {
                 this.x = x; this.y = y; this.color = color; this.vel = vel;
@@ -195,7 +198,6 @@
         setInterval(burst, 700);
         render();
 
-        // --- Hati Melayang ---
         function createHeart() {
             const heart = document.createElement('div');
             heart.className = 'heart-float';

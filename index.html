@@ -9,10 +9,9 @@
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #1a0a2e 0%, #3d143d 100%);
-            /* Warna teks utama menjadi pink cerah */
-            color: #ffb6c1; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a0a20; /* Latar belakang gelap agar pink menyala */
+            color: #ffb6c1;
+            font-family: 'Segoe UI', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -29,120 +28,118 @@
             pointer-events: none;
         }
 
-        .container {
+        /* Border luar seperti di screenshot */
+        .outer-border {
             position: relative;
             z-index: 100;
-            padding: 35px;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(15px);
-            border-radius: 25px;
-            border: 2px solid #ff69b4;
-            max-width: 420px;
-            box-shadow: 0 0 40px rgba(255, 105, 180, 0.3);
+            padding: 20px;
+            border: 3px solid #ff1493; /* Warna Pink Terang */
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
         }
 
         h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            /* Pink Hot untuk Judul */
-            color: #ff69b4; 
-            font-weight: 700;
-            text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+            font-size: 2.5rem;
+            color: #ff69b4;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .sub-text {
-            font-size: 1.1rem;
-            /* Pink Muda untuk Sub-teks */
-            color: #ffc0cb; 
-            margin-bottom: 25px;
+        /* Container Foto Berdampingan */
+        .photo-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .photo-box {
+            width: 140px;
+            height: 140px;
+            border: 3px solid #ff1493;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #222;
+        }
+
+        .photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; /* Muncul setelah klik */
+        }
+
+        /* Kotak Pesan di Bawah */
+        .message-box {
+            border: 2px solid #ff1493;
+            border-radius: 15px;
+            padding: 15px;
+            background: rgba(255, 105, 180, 0.1);
+            display: none; /* Muncul setelah klik */
+        }
+
+        .message-box p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #ffc0cb;
+            margin: 10px 0;
         }
 
         button {
-            padding: 15px 35px;
+            padding: 12px 25px;
             background: #ff1493;
             color: white;
             border: none;
             border-radius: 50px;
+            font-weight: bold;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
-            transition: 0.3s ease;
+            box-shadow: 0 0 10px #ff1493;
+            transition: 0.3s;
         }
 
-        button:hover {
-            transform: scale(1.05);
-            background: #ff69b4;
-        }
+        button:hover { transform: scale(1.1); }
 
-        #secret-message {
-            display: none;
-            margin-top: 25px;
-            font-size: 1.2rem;
-            /* Warna Pink Peach yang manis untuk Pesan Rahasia */
-            color: #ffdab9; 
-            line-height: 1.6;
-            font-weight: 600;
-            background: rgba(255, 105, 180, 0.1);
-            padding: 15px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 182, 193, 0.3);
-        }
-
-        .sticker {
-            position: absolute;
-            font-size: 5rem;
-            z-index: 50;
-            pointer-events: none;
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
-            animation: bounce 2s infinite ease-in-out;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0) rotate(-5deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-
-        .heart-float {
-            position: absolute;
-            color: #ff69b4;
-            font-size: 1.5rem;
-            pointer-events: none;
-            z-index: 2;
-            animation: floatUp 10s linear infinite;
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) scale(1); opacity: 1; }
-            100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
-        }
+        .sticker { position: absolute; font-size: 3.5rem; z-index: 50; animation: bounce 2s infinite ease-in-out; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
     </style>
 </head>
 <body>
 
     <canvas id="fireworks"></canvas>
 
-    <div class="sticker" style="top: 10%; left: 10%;">🥰</div>
-    <div class="sticker" style="top: 15%; right: 10%;">🥳</div>
-    <div class="sticker" style="bottom: 10%; left: 15%;">💖</div>
-    <div class="sticker" style="bottom: 15%; right: 15%;">🧸</div>
+    <div class="sticker" style="top: 5%; left: 5%;">💖</div>
+    <div class="sticker" style="bottom: 5%; right: 5%;">🥰</div>
 
-    <div class="container">
+    <div class="outer-border">
         <h1>Happy New Year! ✨</h1>
-        <p class="sub-text">Untuk seseorang yang paling berharga dalam hidupku...</p>
-        
-        <button id="btnClick">Klik Ini ❤️</button>
-        
-        <div id="secret-message">
-            "Sayang, terima kasih telah membuat tahun 2025 menjadi sangat luar biasa bagiku. 🥰<br><br>
-            Di tahun 2026 ini, aku berharap kita tetap sama-sama yaa pipyyy, saling sayang dan bahagia terus setiap hari. Kamu adalah manusia terbaik yang pernah ada di hidupku!<br><br>
-            I LOVE YOU! ❤️"
+
+       
+           
+
+        <button id="btnClick">Buka Kejutan ❤️</button>
+
+        <div class="message-box" id="msgBox">
+            <p>"Terima kasih sudah membuat tahun 2025 menjadi sangat luar biasa bagiku. 🥰"</p>
+            <p>Di tahun 2026 ini, aku berharap kita tetap sama-sama, saling sayang, dan bahagia terus setiap hari. Kamu adalah hal terbaik yang pernah ada di hidupku!</p>
+            <p style="font-weight: bold; color: #ff1493;">Love You More! 💗</p>
+             <div class="photo-container">
+            <div class="photo-box">
+                <img src="1.jpeg" id="img1">
+            </div>
+            <div class="photo-box">
+                <img src="2.jpeg" id="img2">
         </div>
     </div>
 
     <script>
         const btn = document.getElementById('btnClick');
-        const message = document.getElementById('secret-message');
+        const img1 = document.getElementById('img1');
+        const img2 = document.getElementById('img2');
+        const msgBox = document.getElementById('msgBox');
         const canvas = document.getElementById('fireworks');
         const ctx = canvas.getContext('2d');
 
@@ -150,67 +147,48 @@
         canvas.height = window.innerHeight;
 
         btn.addEventListener('click', () => {
-            message.style.display = 'block';
+            img1.style.display = 'block';
+            img2.style.display = 'block';
+            msgBox.style.display = 'block';
             btn.style.display = 'none';
         });
 
+        // Efek kembang api pink
         class Particle {
             constructor(x, y, color, vel) {
                 this.x = x; this.y = y; this.color = color; this.vel = vel;
-                this.alpha = 1; this.fric = 0.96; this.grav = 0.05;
+                this.alpha = 1;
             }
             draw() {
-                ctx.save();
                 ctx.globalAlpha = this.alpha;
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, 2.5, 0, Math.PI * 2);
+                ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
                 ctx.fillStyle = this.color;
                 ctx.fill();
-                ctx.restore();
             }
             update() {
-                this.vel.x *= this.fric; this.vel.y *= this.fric; this.vel.y += this.grav;
-                this.x += this.vel.x; this.y += this.vel.y; this.alpha -= 0.01;
+                this.x += this.vel.x; this.y += this.vel.y; this.vel.y += 0.05; this.alpha -= 0.01;
             }
         }
 
         let parts = [];
         function burst() {
             const x = Math.random() * canvas.width;
-            const y = Math.random() * (canvas.height * 0.5);
-            const color = `hsl(${Math.random() * 360}, 100%, 60%)`;
-            for (let i = 0; i < 80; i++) {
-                const ang = (Math.PI * 2 / 80) * i;
-                const spd = Math.random() * 10;
-                parts.push(new Particle(x, y, color, {x: Math.cos(ang)*spd, y: Math.sin(ang)*spd}));
+            const y = Math.random() * (canvas.height * 0.4);
+            // Warna kembang api dominan pink & putih
+            const color = `hsl(${330 + Math.random() * 30}, 100%, 70%)`;
+            for (let i = 0; i < 60; i++) {
+                parts.push(new Particle(x, y, color, {x: Math.cos(i)*Math.random()*6, y: Math.sin(i)*Math.random()*6}));
             }
         }
-
         function render() {
-            requestAnimationFrame(render);
-            ctx.fillStyle = 'rgba(26, 10, 46, 0.2)';
+            ctx.fillStyle = 'rgba(26, 10, 32, 0.2)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            parts.forEach((p, i) => {
-                if (p.alpha > 0) { p.update(); p.draw(); }
-                else { parts.splice(i, 1); }
-            });
+            parts.forEach((p, i) => { if (p.alpha > 0) { p.update(); p.draw(); } else { parts.splice(i, 1); } });
+            requestAnimationFrame(render);
         }
-        setInterval(burst, 700);
+        setInterval(burst, 800);
         render();
-
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.className = 'heart-float';
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 10000);
-        }
-        setInterval(createHeart, 500);
-
-        window.onresize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
     </script>
 </body>
 </html>
-
